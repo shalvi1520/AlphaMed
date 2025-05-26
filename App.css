@@ -1,0 +1,148 @@
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.homepage-background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Navbar Styles */
+.navbar {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #f8f9fa !important; /* Light background for the navbar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff !important; /* Brand color */
+}
+
+.navbar a {
+  color: #007bff !important; /* Link color */
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.navbar a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Main Content Styles */
+.container.text-center {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly opaque background for text */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #007bff; /* Primary color */
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #333; /* Dark gray for contrast */
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #555; /* Slightly lighter gray */
+  margin-bottom: 30px;
+}
+
+/* Card Styles */
+.card {
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Button Styles */
+.btn-success {
+  background-color: #28a745; /* Green color for success */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Dedicated styles for Clerk integration */
+.auth-container {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.95); /* Slightly opaque to match design */
+  border-radius: 10px;
+  max-width: 400px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Match shadow style of other components */
+}
+
+.auth-container h1, .auth-container h2 {
+  margin: 10px 0;
+}
+
+.auth-form {
+  text-align: center;
+  font-family: inherit; /* Match the app's typography */
+}
+
+.auth-form button {
+  margin: 10px 0;
+  background-color: #007bff; /* Match primary color */
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.auth-form button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Preventing Clerk links/buttons from inheriting unwanted styles */
+.navbar a.clerk-link, .auth-container a {
+  color: #007bff !important; /* Ensure consistent color with design */
+  text-decoration: underline;
+}
+
+.auth-container a:hover {
+  text-decoration: none;
+}
