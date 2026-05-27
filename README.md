@@ -19,48 +19,19 @@ Upload medical reports in JPG, PNG, or TIFF format. Tesseract OCR extracts text 
 Nearby Hospital Finder-:
 Detects user location and fetches hospitals within a 5 km radius using the OpenStreetMap Overpass API, displayed as clickable markers on an interactive Leaflet map.
 
-Tech Stack-: 
-Frontend-: React.js, Bootstrap, Axios
-Backend-: Flask, Python 3.10+, REST APIs 
-Machine Learning-: Scikit-learn, Pandas, NumPy 
-LLM-: Google Gemini API 
-OCR-: Tesseract OCR Engine 
-Database-: MongoDB Atlas 
-Authentication-: Clerk 
-Maps-: OpenStreetMap, Overpass API, Leaflet.js 
+Tech Stack-:
+| Layer | Technology |
+|---|---|
+| Frontend | React.js, Bootstrap, Axios |
+| Backend | Flask, Python 3.10+, REST APIs |
+| Machine Learning | Scikit-learn, Pandas, NumPy |
+| LLM | Google Gemini API |
+| OCR | Tesseract OCR Engine |
+| Database | MongoDB Atlas |
+| Authentication | Clerk |
+| Maps | OpenStreetMap, Overpass API, Leaflet.js |
 
 Getting Started-:
-Prerequisites: Python 3.10+, Node.js 18+, MongoDB Atlas account, Google Gemini API key, Clerk account, Tesseract OCR installed locally.
-
-Backend setup:
-git clone https://github.com/shalvi1520/AlphaMed.git
-cd AlphaMed/backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env
-
-Add GEMINI_API_KEY and MONGODB_URI to .env
-python app.py
-
-
-Frontend setup:
-cd ../frontend
-npm install
-cp .env.example .env
-Add CLERK_PUBLISHABLE_KEY and VITE_API_URL to .env
-npm run dev
-
-ML Model-:
-
-Algorithm: Random Forest Classifier
-Input: 40+ binary-encoded symptom features
-Accuracy: 93%
-Framework: Scikit-learn
-
-
-**Getting Started**
-
 Prerequisites: Python 3.10+, Node.js 18+, MongoDB Atlas account, Google Gemini API key, Clerk account, Tesseract OCR installed locally.
 
 Backend setup:
@@ -86,7 +57,7 @@ npm run dev
 
 ---
 
-**ML Model**
+ML Model
 
 Algorithm: Random Forest Classifier
 Input: 40+ binary-encoded symptom features
@@ -95,32 +66,6 @@ Framework: Scikit-learn
 
 
 The training pipeline cleans and encodes a symptom-disease dataset into a binary feature matrix, splits it into train/test sets, trains the classifier, and saves the model as a `.pkl` file for inference.
-
-Project Structure-:
-AlphaMed/
-├── backend/
-│   ├── app.py
-│   ├── model/
-│   │   ├── train_model.py
-│   │   └── disease_model.pkl
-│   ├── routes/
-│   │   ├── predict.py
-│   │   ├── chat.py
-│   │   ├── ocr.py
-│   │   └── hospitals.py
-│   ├── database/
-│   │   └── mongo.py
-│   └── requirements.txt
-├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   │   ├── Home.jsx
-│   │   │   ├── Dashboard.jsx
-│   │   │   ├── Diagnosis.jsx
-│   │   │   └── Chatbot.jsx
-│   │   └── App.jsx
-│   └── package.json
-└── README.md
 
 Future Plans-:
 - Conversational memory and context retention in chatbot
