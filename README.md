@@ -57,7 +57,7 @@ npm run dev
 
 ---
 
-ML Model
+**ML Model**
 
 Algorithm: Random Forest Classifier
 Input: 40+ binary-encoded symptom features
