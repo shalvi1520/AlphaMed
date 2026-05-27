@@ -58,6 +58,42 @@ Input: 40+ binary-encoded symptom features
 Accuracy: 93%
 Framework: Scikit-learn
 
+
+**Getting Started**
+
+Prerequisites: Python 3.10+, Node.js 18+, MongoDB Atlas account, Google Gemini API key, Clerk account, Tesseract OCR installed locally.
+
+Backend setup:
+```bash
+git clone https://github.com/shalvi1520/AlphaMed.git
+cd AlphaMed/backend
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+# Add GEMINI_API_KEY and MONGODB_URI to .env
+python app.py
+```
+
+Frontend setup:
+```bash
+cd ../frontend
+npm install
+cp .env.example .env
+# Add CLERK_PUBLISHABLE_KEY and VITE_API_URL to .env
+npm run dev
+```
+
+---
+
+**ML Model**
+
+Algorithm: Random Forest Classifier
+Input: 40+ binary-encoded symptom features
+Accuracy: 93%
+Framework: Scikit-learn
+
+
 The training pipeline cleans and encodes a symptom-disease dataset into a binary feature matrix, splits it into train/test sets, trains the classifier, and saves the model as a `.pkl` file for inference.
 
 Project Structure-:
