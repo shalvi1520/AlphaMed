@@ -1,69 +1,95 @@
-AlphaMed – AI-Powered Personal Healthcare Assistant
+AlphaMed — AI-Powered Personal Healthcare Assistant
 
-Name
-AlphaMed – Your intelligent, AI-driven assistant for early disease diagnosis and health insights based on symptoms.
+AlphaMed is a full-stack AI healthcare assistant that combines machine learning, large language models, OCR, and geolocation into a single platform. Users can enter symptoms to get disease predictions, chat with an AI medical assistant, track health vitals on a dashboard, upload and interpret medical reports, and find nearby hospitals — all in one place.
 
-Description:
-AlphaMed is an intelligent, AI-driven healthcare assistant developed as part of a Project-Based Learning (PBL) initiative. It is designed to help users diagnose diseases based on the symptoms they experience. The system takes input from the user in the form of symptoms selected through a user-friendly interface, processes the input using a trained Machine Learning model, and returns a disease prediction along with useful information such as the disease description, severity, matched symptoms, and suggested precautions.
-The frontend of AlphaMed is built using React.js and styled with Bootstrap to provide a smooth and modern user experience. User authentication is securely handled using Clerk, allowing users to sign up and sign in safely. The dashboard allows users to select symptoms from a dropdown, and a medical report upload feature is planned to be added soon. This upcoming feature will use NLP (Natural Language Processing) to extract relevant symptoms from uploaded medical documents, making diagnosis even easier and more accurate.
-The backend is planned to be built using Flask, where a trained RandomForestClassifier model from scikit-learn will handle the diagnosis logic. The model is trained using a dataset of symptoms and diseases. Features were preprocessed using a ColumnTransformer with StandardScaler for numeric data and OneHotEncoder for categorical data. The trained model, along with its preprocessing pipeline, is saved as model_with_preprocessor.pkl using joblib and will be loaded into the Flask backend for live predictions.
-The ML model takes a binary-encoded input vector of symptoms (totaling 513 features) and returns the predicted disease along with its relevant information. For example, if a user inputs symptoms like "headache", "nausea", and "fatigue", the model may return a disease like "Migraine", along with its description, moderate severity level, precautions (like rest and avoiding bright lights), and the matched symptoms.
-In terms of project structure, AlphaMed is divided into frontend/ for the React UI, backend/ for the Flask API and model integration (in progress), and model/ which contains the training notebook and datasets used for training. The backend will also be connected to a MongoDB database in future updates to store user history and support further analytics features.
+ AlphaMed is not a substitute for professional medical diagnosis. It serves as a first-step tool for health awareness and preliminary guidance.
 
- 
-Key Features:
-- User-friendly symptom selector
-- Real-time disease prediction using a trained ML model
-- Detailed information: description, severity, precautions
-- Planned NLP-based symptom extraction from uploaded medical reports
-- Secure authentication system via Clerk
-- Expandable to include report history, chatbot, and admin panel
+Disease Prediction-:
+Enter symptoms and receive instant preliminary disease predictions powered by a trained Random Forest Classifier with 93% accuracy across 40+ symptom features. Results include disease description, probable causes, precautions, recommended specialist type, and suggested medications generated via Gemini LLM.
 
-🔗 *More on [Random Forest Algorithm](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)*
+LLM Medical Chatbot-:
+A conversational chatbot for real-time health queries powered by Gemini API. Supports quick action categories including symptom check, medication info, health tips, and prevention. Full chat history is stored per user in MongoDB.
 
+Health Dashboard-:
+Personalized dashboard showing BMI, blood pressure, sugar levels, and a BP trend graph visualizing vitals over time. Users can add and edit health notes, view past diagnosis history, and track medical details including cholesterol and disease score summaries.
 
- Installation
+Medical Report Interpretation-:
+Upload medical reports in JPG, PNG, or TIFF format. Tesseract OCR extracts text from the document, which is then passed to Gemini LLM to generate a structured medical summary displayed alongside the diagnosis result.
 
-Requirements
-- React (for frontend)
-- Python 3.8+ (for backend)
-- pip for installing Python packages
-- MongoDB (optional, future use)
+Nearby Hospital Finder-:
+Detects user location and fetches hospitals within a 5 km radius using the OpenStreetMap Overpass API, displayed as clickable markers on an interactive Leaflet map.
 
-Setup Instructions
+Tech Stack-: 
+Frontend-: React.js, Bootstrap, Axios
+Backend-: Flask, Python 3.10+, REST APIs 
+Machine Learning-: Scikit-learn, Pandas, NumPy 
+LLM-: Google Gemini API 
+OCR-: Tesseract OCR Engine 
+Database-: MongoDB Atlas 
+Authentication-: Clerk 
+Maps-: OpenStreetMap, Overpass API, Leaflet.js 
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/your-username/AlphaMed.git
-   cd AlphaMed
-   cd frontend
-npm install
-npm start
-cd backend
+Getting Started-:
+Prerequisites: Python 3.10+, Node.js 18+, MongoDB Atlas account, Google Gemini API key, Clerk account, Tesseract OCR installed locally.
+
+Backend setup:
+git clone https://github.com/shalvi1520/AlphaMed.git
+cd AlphaMed/backend
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
+cp .env.example .env
+
+Add GEMINI_API_KEY and MONGODB_URI to .env
 python app.py
 
-ML Model
-Pre-trained model saved as model_with_preprocessor.pkl
-Loaded inside the Flask backend automatically
 
-Example Output:
-{
-  "Disease": "Migraine",
-  "Description": "A neurological condition that causes intense headaches and other symptoms.",
-  "Severity": "Moderate",
-  "Precautions": ["Rest", "Avoid bright lights", "Proper medication"],
-  "Matched Symptoms": ["headache", "nausea", "fatigue"]
-}
-Support:
-If you encounter issues or have questions:
-Open a GitHub Issue
-Email: shalvi.khare2007@gmail.com
+Frontend setup:
+cd ../frontend
+npm install
+cp .env.example .env
+Add CLERK_PUBLISHABLE_KEY and VITE_API_URL to .env
+npm run dev
 
-Project Status:
-AlphaMed is currently under active development. New features and modules are being added regularly. If you'd like to help, you're welcome to contribute or become a maintainer!
+ML Model-:
 
+Algorithm: Random Forest Classifier
+Input: 40+ binary-encoded symptom features
+Accuracy: 93%
+Framework: Scikit-learn
 
+The training pipeline cleans and encodes a symptom-disease dataset into a binary feature matrix, splits it into train/test sets, trains the classifier, and saves the model as a `.pkl` file for inference.
 
+Project Structure-:
+AlphaMed/
+├── backend/
+│   ├── app.py
+│   ├── model/
+│   │   ├── train_model.py
+│   │   └── disease_model.pkl
+│   ├── routes/
+│   │   ├── predict.py
+│   │   ├── chat.py
+│   │   ├── ocr.py
+│   │   └── hospitals.py
+│   ├── database/
+│   │   └── mongo.py
+│   └── requirements.txt
+├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Home.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Diagnosis.jsx
+│   │   │   └── Chatbot.jsx
+│   │   └── App.jsx
+│   └── package.json
+└── README.md
 
-
+Future Plans-:
+- Conversational memory and context retention in chatbot
+- PDF support and structured parameter extraction for OCR
+- Wearable device integration for real-time vitals
+- Multilingual support
+- Cloud deployment on AWS/GCP with CI/CD pipeline
+- React Native mobile app
